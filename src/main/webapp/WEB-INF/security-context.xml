@@ -1,0 +1,58 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+			 xmlns:security="http://www.springframework.org/schema/security" 
+             xmlns:context="http://www.springframework.org/schema/context"
+		     xmlns:tx="http://www.springframework.org/schema/tx"
+	         xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                                 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		                         http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+                                 http://www.springframework.org/schema/security
+                                 http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.martinlibersan.appdirect.codingchallenge.security" />
+
+	<!-- Spring Security  -->
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/subscription/**" access="ROLE_USER" />
+		<security:intercept-url pattern="/user/**" access="ROLE_USER" />
+
+		<security:openid-login authentication-failure-handler-ref="customAuthenticationFailureHandler" default-target-url="/" authentication-success-handler-ref="customAuthenticationSuccessHandler"
+			user-service-ref="customUserService">
+			<security:attribute-exchange>
+				<security:openid-attribute name="appdirectUUID" type="https://www.appdirect.com/schema/user/uuid" required="true" />
+				<security:openid-attribute name="axContactEmail" type="http://axschema.org/contact/email" required="true" />
+				<security:openid-attribute name="axNamePersonFirstName" type="http://axschema.org/namePerson/first" required="true" />
+				<security:openid-attribute name="axNamePersonLastName" type="http://axschema.org/namePerson/last" required="true" />
+				<security:openid-attribute name="axNamePersonFullName" type="http://axschema.org/namePerson" required="true" />
+				<security:openid-attribute name="axPrefLanguage" type="http://axschema.org/pref/language" required="true" />
+				<security:openid-attribute name="appdirectCompagnyUUID" type="https://www.appdirect.com/schema/company/uuid" required="true" />
+				<security:openid-attribute name="axCompanyName" type="http://axschema.org/company/name" required="true" />
+				<security:openid-attribute name="axCompanyTitle" type="http://axschema.org/company/title" required="true" />
+			</security:attribute-exchange>
+		</security:openid-login>
+
+		<security:form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?error" username-parameter="username" password-parameter="password" />
+
+		<security:logout logout-success-url="/login?logout" />
+	</security:http>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider ref="customAuthenticationProvider" />
+	</security:authentication-manager>
+
+
+	<bean id="customUserService" class="com.martinlibersan.appdirect.codingchallenge.security.service.CustomUserService">
+	</bean>
+
+	<bean id="customAuthenticationFailureHandler" class="com.martinlibersan.appdirect.codingchallenge.security.CustomAuthenticationFailureHandler">
+	</bean>
+
+	<bean id="customAuthenticationSuccessHandler" class="com.martinlibersan.appdirect.codingchallenge.security.CustomAuthenticationSuccessHandler">
+	</bean>
+	
+
+</beans>
