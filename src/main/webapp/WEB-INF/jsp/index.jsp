@@ -23,31 +23,35 @@
 </head>
 
 <body>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a href="/" class="brand">AppDirect Coding Challenge</a> <a href="/" class="brand" id="heroku">by <strong>Martin Libersan</strong></a>
-			</div>
-		</div>
-	</div>
 
 	<div class="container">
 		<div class="row">
+			<div class="span12">
+				<div class="navbar navbar-fixed-top">
+					<div class="navbar-inner">
+						<div class="container">
+							<a href="/" class="brand">AppDirect Coding Challenge</a> <a href="/" class="brand" id="heroku">by <strong>Martin Libersan</strong></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="span8 offset2">
 				<div class="page-header">
-					<h1>User and Subscription Management</h1>
+					<h4>User and Subscription Management</h4>
 				</div>
 			</div>
 			<div class="row">&nbsp;</div>
 			<div class="row">
-				<div class="span8 offset2">
+				<div class="span8 offset4">
 					<c:url value="/list" var="viewUserURL">
 					</c:url>
 					<a href="${viewUserURL}">View users</a>
 				</div>
 			</div>
 			<div class="row">
-				<div class="span8 offset2">
+				<div class="span8 offset4">
 					<c:url value="/create" var="addUserURL">
 					</c:url>
 					<a href="${addUserURL}">Add user</a>
@@ -55,7 +59,7 @@
 			</div>
 			<div class="row">&nbsp;</div>
 			<div class="row">
-				<div class="span8 offset2">
+				<div class="span8 offset4">
 					<c:url value="/subscription/order" var="orderSubscriptionURL">
 						<c:param name="endpointUrl">https://www.appdirect.com/rest/api/events/dummyOrder</c:param>
 					</c:url>
@@ -63,7 +67,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="span8 offset2">
+				<div class="span8 offset4">
 					<c:url value="/subscription/cancel" var="cancelSubscriptionURL">
 						<c:param name="endpointUrl">https://www.appdirect.com/rest/api/events/dummyCancel</c:param>
 					</c:url>
@@ -71,7 +75,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="span8 offset2">
+				<div class="span8 offset4">
 					<c:url value="/user/assignment" var="userAssignmentURL">
 						<c:param name="endpointUrl">https://www.appdirect.com/rest/api/events/dummyAssign</c:param>
 					</c:url>
@@ -79,7 +83,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="span8 offset2">
+				<div class="span8 offset4">
 					<c:url value="/user/unassignment" var="userUnassignmentURL">
 						<c:param name="endpointUrl">https://www.appdirect.com/rest/api/events/dummyUnassign</c:param>
 					</c:url>

@@ -23,22 +23,25 @@
 </head>
 
 <body>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a href="/" class="brand">AppDirect Coding Challenge</a> <a href="/" class="brand" id="heroku">by <strong>Martin Libersan</strong></a>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div class="navbar navbar-fixed-top">
+					<div class="navbar-inner">
+						<div class="container">
+							<a href="/" class="brand">AppDirect Coding Challenge</a> <a href="/" class="brand" id="heroku">by <strong>Martin Libersan</strong></a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="container">
 		<c:url value="/add" var="addPersonURL">
 		</c:url>
 		<form:form method="post" action="${addPersonURL}" commandName="person" class="form-vertical">
 			<div class="row">
 				<div class="span8 offset2">
 					<div class="page-header">
-						<h1>Edit User</h1>
+						<h4>Edit User</h4>
 					</div>
 					<form:hidden path="id" />
 					<form:hidden path="xml" />

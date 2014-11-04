@@ -23,10 +23,14 @@
 </head>
 
 <body>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a href="/" class="brand">AppDirect Coding Challenge</a> <a href="/" class="brand" id="heroku">by <strong>Martin Libersan</strong></a>
+	<div class="row">
+		<div class="span12">
+			<div class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container">
+						<a href="/" class="brand">AppDirect Coding Challenge</a> <a href="/" class="brand" id="heroku">by <strong>Martin Libersan</strong></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -34,7 +38,7 @@
 	<div class="row">
 		<div class="span8 offset2">
 			<div class="page-header">
-				<h1>User Originating XML Request</h1>
+				<h4>User Originating XML Request</h4>
 			</div>
 		</div>
 	</div>
