@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.martinlibersan.appdirect.codingchallenge.web.model.Person;
 import com.martinlibersan.appdirect.codingchallenge.web.service.OAuthSignatureService;
@@ -257,6 +259,40 @@ public class MainController {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN, "OAuth Signature refused");
 		}
 		return "user_unassignment_success";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login(@RequestParam(value = "openidUrl", required = false) String openidUrl,@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout,HttpServletRequest request) {
+		String openIdUrl = request.getParameter("openidUrl");
+		logger.info("login openIdUrl " + openIdUrl );
+		ModelAndView model = new ModelAndView();
+		if (error != null) {
+			model.addObject("error", "Invalid username and password!");
+		}
+
+		if (logout != null) {
+			model.addObject("msg", "You've been logged out successfully.");
+		}
+		
+		if (openIdUrl == null) {
+			//Development Mode with Google
+			String testGoogleOpenId = "https://www.google.com/accounts/o8/id?id=AItOawm4dZwYExaP8gWMZsPCUEZkPUZQ4n0Hvmc";
+			Person person = personService.findPersonByOpenId(testGoogleOpenId);
+			if (person == null) {
+				person =  new Person();
+				person.setFirstName("Martin");
+				person.setLastName("Libersan");
+				person.setOpenId(testGoogleOpenId);
+				personService.addPerson(person);
+			}
+			openIdUrl = "https://www.google.com/accounts/o8/id";
+		}
+		
+		model.addObject("openIdUrl", openIdUrl);
+		model.setViewName("login_openid");
+
+		return model;
+
 	}
 	
 }

@@ -90,6 +90,14 @@
 					<a href="${userUnassignmentURL}">Test user unassignment</a>
 				</div>
 			</div>
+			<div class="row">&nbsp;</div>
+			<div class="row">
+				<div class="span8 offset4">
+					<c:url value="/j_spring_security_logout" var="logoutURL" />
+					<a href="${logoutURL}"> Logout</a>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </body>

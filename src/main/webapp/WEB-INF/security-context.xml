@@ -19,8 +19,9 @@
 	<security:http auto-config="true">
 		<security:intercept-url pattern="/subscription/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/user/**" access="ROLE_USER" />
+		<security:intercept-url pattern="/list/**" access="ROLE_USER" />
 
-		<security:openid-login authentication-failure-handler-ref="customAuthenticationFailureHandler" default-target-url="/" authentication-success-handler-ref="customAuthenticationSuccessHandler"
+		<security:openid-login authentication-failure-handler-ref="customAuthenticationFailureHandler" default-target-url="/"  authentication-success-handler-ref="customAuthenticationSuccessHandler"
 			user-service-ref="customUserService">
 			<security:attribute-exchange>
 				<security:openid-attribute name="appdirectUUID" type="https://www.appdirect.com/schema/user/uuid" required="true" />
