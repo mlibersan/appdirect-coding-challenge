@@ -17,8 +17,6 @@
 
 	<!-- Spring Security  -->
 	<security:http auto-config="true">
-		<security:intercept-url pattern="/subscription/**" access="ROLE_USER" />
-		<security:intercept-url pattern="/user/**" access="ROLE_USER" />
 		<security:intercept-url pattern="/list/**" access="ROLE_USER" />
 
 		<security:openid-login authentication-failure-handler-ref="customAuthenticationFailureHandler" default-target-url="/"  authentication-success-handler-ref="customAuthenticationSuccessHandler"
