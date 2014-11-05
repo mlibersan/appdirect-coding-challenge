@@ -15,6 +15,10 @@ import com.martinlibersan.appdirect.codingchallenge.web.model.Person;
 import com.martinlibersan.appdirect.codingchallenge.web.service.PersonService;
 
 @Service
+/**
+ * This class is implemented to fetch user informations and credentials from a database.
+ *
+ */
 public class CustomUserService implements UserDetailsService {
 
 	private static final Logger logger = Logger.getLogger(CustomUserService.class);

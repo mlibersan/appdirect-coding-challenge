@@ -17,6 +17,11 @@ import org.xml.sax.SAXException;
 
 import com.martinlibersan.appdirect.codingchallenge.web.model.Person;
 
+/**
+ * Class responsible to parse subscription response from AppDirect
+ * and extract user information. 
+ *
+ */
 @Component
 public class SubscriptionXMLParser {
 

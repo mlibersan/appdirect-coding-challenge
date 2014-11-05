@@ -15,6 +15,7 @@
     <context:component-scan base-package="com.martinlibersan.appdirect.codingchallenge.web.model" />
     <context:component-scan base-package="com.martinlibersan.appdirect.codingchallenge.web.service" />
 
+	<!-- Spring Transactions and Hibernate  -->
     <tx:annotation-driven />
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />

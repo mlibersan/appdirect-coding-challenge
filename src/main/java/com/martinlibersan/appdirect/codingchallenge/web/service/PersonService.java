@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.martinlibersan.appdirect.codingchallenge.web.model.Person;
 
+/**
+ * Class responsible to manage user in database
+ *
+ */
 public interface PersonService {
     
     public void addPerson(Person person);

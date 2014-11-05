@@ -13,6 +13,12 @@ import org.springframework.security.openid.OpenIDAuthenticationToken;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
+/**
+ * CustomAuthenticationFailureHandler
+ * 
+ * This class has been implemented in order to logs openId attributes in case of an authentication failure.
+ *
+ */
 @Component
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 

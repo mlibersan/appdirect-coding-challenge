@@ -19,6 +19,10 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+/**
+ * Class responsible to parse and format xml Document. 
+ *
+ */
 @Component
 public class XmlParser {
 

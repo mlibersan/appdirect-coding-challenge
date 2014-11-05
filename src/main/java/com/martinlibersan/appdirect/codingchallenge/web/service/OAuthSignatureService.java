@@ -25,6 +25,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * This class is responsible to sign each request to AppDirect
+ * and validate outgoing requests from AppDirect 
+ *
+ */
 @Service
 public class OAuthSignatureService {
 

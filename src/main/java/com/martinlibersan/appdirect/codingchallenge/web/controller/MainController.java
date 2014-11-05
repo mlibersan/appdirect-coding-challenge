@@ -25,10 +25,17 @@ import com.martinlibersan.appdirect.codingchallenge.web.service.SubscriptionXMLP
 import com.martinlibersan.appdirect.codingchallenge.web.service.UserXMLParser;
 import com.martinlibersan.appdirect.codingchallenge.web.service.XmlParser;
 
+/**
+ * This class is the Main Controller for the web application
+ *
+ */
 @Controller
 public class MainController {
 
 	private static final Logger logger = Logger.getLogger(MainController.class);
+	
+	//Developer key to sign each OAuth request to AppDirect
+	//and validate outgoing requests from AppDirect 
 	private static final String OAUTH_CONSUMER_KEY = "martin-libersan-services-conseil-coding-challenge-16426";
 	private static final String OAUTH_CONSUMER_SECRET = "3hDydzrm0lrIxCTO";
 

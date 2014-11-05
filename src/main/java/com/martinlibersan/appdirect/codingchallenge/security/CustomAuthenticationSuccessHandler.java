@@ -12,7 +12,12 @@ import org.springframework.security.openid.OpenIDAttribute;
 import org.springframework.security.openid.OpenIDAuthenticationToken;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
-public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+/**
+ * CustomAuthenticationFailureHandler
+ * 
+ * This class has been implemented in order to logs openId attributes in case of an authentication success.
+ *
+ */public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
 	private static final Logger logger = Logger.getLogger(CustomAuthenticationSuccessHandler.class);
 

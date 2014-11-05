@@ -16,6 +16,11 @@ import org.springframework.stereotype.Component;
 import com.martinlibersan.appdirect.codingchallenge.security.model.User;
 import com.martinlibersan.appdirect.codingchallenge.security.service.CustomUserService;
 
+/**
+ * This class is implemented to do custom autuentication using spring-security.
+ * User credentials are validated against information stored in a database.
+ *
+ */
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
