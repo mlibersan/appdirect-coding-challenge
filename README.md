@@ -15,11 +15,11 @@ Then run it with:
 
 ## See the application deployed on Heroku
 
-	[http://mlibersan-coding-challenge.herokuapp.com/](http://mlibersan-coding-challenge.herokuapp.com/)
+[http://mlibersan-coding-challenge.herokuapp.com/](http://mlibersan-coding-challenge.herokuapp.com/)
 
 ## AppDirect Integration : Login URL  
 
-https://mlibersan-coding-challenge.herokuapp.com/login?openidUrl={openid}
+	https://mlibersan-coding-challenge.herokuapp.com/login?openidUrl={openid}
 
 ## AppDirect Integration : Endpoint URLs
 
