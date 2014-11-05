@@ -54,12 +54,24 @@ public class MainController {
 	@Autowired
 	private UserXMLParser userXMLParser;
 
+	/**
+	 * Display default page
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/")
 	public String people(Model model) {
 		logger.info("defaul view");
 		return "index";
 	}
 
+	/**
+	 * Display user creation screen
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/create")
 	public String createPeople(Model model) {
 		logger.info("create user");
@@ -67,6 +79,13 @@ public class MainController {
 		return "people_add";
 	}
 
+	/**
+	 * Display user modification screen
+	 * 
+	 * @param model
+	 * @param personOpenId
+	 * @return
+	 */
 	@RequestMapping("/edit")
 	public String editPeople(Model model, String personOpenId) {
 		logger.info("edit user");
@@ -76,6 +95,15 @@ public class MainController {
 		return "people_edit";
 	}
 
+	/**
+	 * Display xml response of an appdirect enpoint url associated 
+	 * to the user creation transaction. 
+	 * 
+	 * @param model
+	 * @param personId
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	@RequestMapping("/xml/{personId}")
 	public String xmlPeople(Model model, @PathVariable("personId") Integer personId) throws UnsupportedEncodingException {
 		logger.info("view user xml originating request");
@@ -89,6 +117,12 @@ public class MainController {
 		return "people_xml";
 	}
 
+	/**
+	 * List user of the application
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/list")
 	public String listPeople(Model model) {
 		logger.info("list user");
@@ -96,6 +130,14 @@ public class MainController {
 		return "people_list";
 	}
 
+	/**
+	 * Create a user
+	 * 
+	 * @param model
+	 * @param person
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addPerson(Model model, @ModelAttribute("person") Person person, BindingResult result) {
 		logger.info("add user");
@@ -103,6 +145,14 @@ public class MainController {
 		return "index";
 	}
 
+	/**
+	 * Update a user
+	 * 
+	 * @param model
+	 * @param person
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updatePerson(Model model, @ModelAttribute("person") Person person, BindingResult result) {
 		logger.info("update user");
@@ -117,6 +167,13 @@ public class MainController {
 		return "index";
 	}
 
+	/**
+	 * Delete a user
+	 * 
+	 * @param model
+	 * @param personId
+	 * @return
+	 */
 	@RequestMapping("/delete/{personId}")
 	public String deletePerson(Model model, @PathVariable("personId") Integer personId) {
 		logger.info("remove user");
@@ -125,6 +182,16 @@ public class MainController {
 		return "index";
 	}
 
+	/**
+	 * Handle order subscription and create a user based on creator information.
+	 * 
+	 * @param model
+	 * @param endpointUrl
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping("/subscription/order")
 	public String orderSubscription(Model model, String endpointUrl, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		logger.info("order subscription");
@@ -132,7 +199,7 @@ public class MainController {
 
 		try {
 			if ("https://www.appdirect.com/rest/api/events/dummyOrder".equals(endpointUrl)) {
-				// Development Mode no need to verify
+				// Development Mode no need to verify AppDirecy dummy endpoint
 			} else {
 				oauthSignatureService.verifyRequest(OAUTH_CONSUMER_KEY, OAUTH_CONSUMER_SECRET, request);
 			}
@@ -162,6 +229,16 @@ public class MainController {
 		return "subscription_order_success";
 	}
 
+	/**
+	 * Handle subscription cancellation and delete the user based based on creator information.
+	 * 
+	 * @param model
+	 * @param endpointUrl
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping("/subscription/cancel")
 	public String cancelSubscription(Model model, String endpointUrl, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		logger.info("cancel subscription");
@@ -169,7 +246,7 @@ public class MainController {
 
 		try {
 			if ("https://www.appdirect.com/rest/api/events/dummyCancel".equals(endpointUrl)) {
-				// Development Mode no need to verify
+				// Development Mode no need to verify AppDirecy dummy endpoint
 			} else {
 				oauthSignatureService.verifyRequest(OAUTH_CONSUMER_KEY, OAUTH_CONSUMER_SECRET, request);
 			}
@@ -197,6 +274,16 @@ public class MainController {
 	}
 
 	
+	/**
+	 * Handle user assignment and create the user
+	 * 
+	 * @param model
+	 * @param endpointUrl
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping("/user/assignment")
 	public String assignUser(Model model, String endpointUrl, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		logger.info("user assignment");
@@ -204,7 +291,7 @@ public class MainController {
 
 		try {
 			if ("https://www.appdirect.com/rest/api/events/dummyAssign".equals(endpointUrl)) {
-				// Development Mode no need to verify
+				// Development Mode no need to verify AppDirecy dummy endpoint
 			} else {
 				oauthSignatureService.verifyRequest(OAUTH_CONSUMER_KEY, OAUTH_CONSUMER_SECRET, request);
 			}
@@ -234,6 +321,16 @@ public class MainController {
 		return "user_assignment_success";
 	}
 
+	/**
+	 * Handle user unassigment and delete the user
+	 * 
+	 * @param model
+	 * @param endpointUrl
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping("/user/unassignment")
 	public String unassignUser(Model model, String endpointUrl, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		logger.info("/user/assignment subscription");
@@ -241,7 +338,7 @@ public class MainController {
 
 		try {
 			if ("https://www.appdirect.com/rest/api/events/dummyUnassign".equals(endpointUrl)) {
-				// Development Mode no need to verify
+				// Development Mode no need to verify AppDirecy dummy endpoint
 			} else {
 				oauthSignatureService.verifyRequest(OAUTH_CONSUMER_KEY, OAUTH_CONSUMER_SECRET, request);
 			}
@@ -268,6 +365,15 @@ public class MainController {
 		return "user_unassignment_success";
 	}
 	
+	/**
+	 * Handle openId login
+	 * 
+	 * @param openidUrl
+	 * @param error
+	 * @param logout
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "openidUrl", required = false) String openidUrl,@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout,HttpServletRequest request) {
 		String openIdUrl = request.getParameter("openidUrl");
@@ -283,6 +389,8 @@ public class MainController {
 		
 		if (openIdUrl == null) {
 			//Development Mode with Google
+			//If no openIdUrl is specified we test locally with google
+			//and create a test user in database with my google account open id url
 			String testGoogleOpenId = "https://www.google.com/accounts/o8/id?id=AItOawm4dZwYExaP8gWMZsPCUEZkPUZQ4n0Hvmc";
 			Person person = personService.findPersonByOpenId(testGoogleOpenId);
 			if (person == null) {
